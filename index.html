@@ -55,7 +55,7 @@
         color: rgba(0, 0, 0, 0.35);
       }
 
-      span {
+      h1 span {
         font-size: 10.6vw;
         line-height: 1em;
         z-index: 100;
@@ -63,8 +63,8 @@
         display: block;
       }
 
-      span,
-      span:after {
+      h1 span,
+      h1 span:after {
         font-weight: 600;
         color: #e17171;
         white-space: nowrap;
@@ -73,7 +73,7 @@
         letter-spacing: 0.16em;
       }
 
-      span:after {
+      h1 span:after {
         color: rgba(0, 0, 0, .25);
         text-shadow: none;
         position: absolute;
@@ -98,7 +98,7 @@
         h1 {
           font-size: 2.5vw;
         }
-        span {
+        h1 span {
           font-size: 6vw;
         }
       }
@@ -588,13 +588,23 @@
       </div>
 
       <h2 class="bottom-right">
-        To Jensen Mikelle:
+        To <span id="valentine">Jensen Mikelle</span>:
         <br/>
-        You are my queen bee
+        <span id="message">You are my queen bee</span>
       </h2>
     </div>
     <script>
 (() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const valentine = urlParams.get('valentine');
+    if (valentine) {
+      document.getElementById('valentine').innerHTML = valentine;
+    }
+    const message = urlParams.get('message');
+    if (message) {
+      document.getElementById('message').innerHTML = message;
+    }
+
     var maxEntities = 42;
     let randomize = (n) => Math.floor(Math.random() * n);
     let addCss = function(dynamicStyles) {
